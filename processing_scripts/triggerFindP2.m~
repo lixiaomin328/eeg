@@ -29,7 +29,7 @@ for trial =startingTrial:length(behavioralData.player1ActionCheck_keys)
          trialStart = [trialStart;length(recoveredTrigger)-2];
      end
 end
-trialIndex = trialIndex(startingTrial:end);
+trialIndex = trialIndex
 p2HasActionTrialStart =[trialStart(find(trialIndex==4));trialStart(find(trialIndex==1))];
 p2HasActionTrialStart = sort(p2HasActionTrialStart);
 p2DecisionStart = p2HasActionTrialStart+2;
