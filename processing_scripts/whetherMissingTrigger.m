@@ -1,5 +1,5 @@
 function [nFromEEGfile,nFromBehaviorData] = whetherMissingTrigger(subId)
-LoadingDir = '../EEG_data/';
+LoadingDir = '../test_faster/';
 load('startingTriggerTrial');
 startingTrial = startingTrigerTrial(2,subId-9)+1;
 filename = [num2str(subId),'a.set'];
