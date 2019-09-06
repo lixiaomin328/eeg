@@ -1,8 +1,18 @@
 %eventEdit load EEGdata first
-[p2DecisionStart,p2DecisionMade] = triggerFindP2(subId);
+function triggerEdit(subId,filename)
+load('startingTriggerTrial');
+startingTrial = startingTrigerTrial(2,subId-9)+1;
+inputFolder = '/Volumes/colin/EEG_data/';
+outputFolder = '/Volumes/colin/cutEEGdata';
+EEG = pop_loadset('filename',filename,'filepath',inputFolder);
+[p2DecisionStart,p2DecisionMade,recoveredTrigger,recoveredTrialNum] = triggerFindP2(subId,startingTrial);
 for i = 1:length(p2DecisionStart)
-    EEG.event(p2DecisionStart(i)+3).type=3;
-    EEG.event(p2DecisionMade(i)+3).type=5;
-    EEG.urevent(p2DecisionStart(i)+3).type=3;
-    EEG.urevent(p2DecisionMade(i)+3).type=5;
+    recoveredTrigger(p2DecisionStart(i))=3;
+    recoveredTrigger(p2DecisionMade(i))=5;
 end
+
+for j = 1:length(recoveredTrigger)
+    EEG.event(j).type = recoveredTrigger(j);
+    EEG.event(j).trialNum = recoveredTrialNum(j);
+end
+EEG = pop_saveset(EEG,'filename',filename,'filepath',outputFolder);
