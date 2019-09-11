@@ -1,7 +1,11 @@
 function [nFromEEGfile,nFromBehaviorData] = whetherMissingTrigger(subId)
 LoadingDir = '/Volumes/colin/EEG_data/';
+if subId<15
 load('startingTriggerTrial');
 startingTrial = startingTrigerTrial(2,subId-9)+1;
+else 
+startingTrial =1;
+end
 filename = [num2str(subId),'a.set'];
 run '../eeglab.m'
 EEG = pop_loadset('filename',filename,'filepath',LoadingDir);

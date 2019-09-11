@@ -1,7 +1,13 @@
 %eventEdit load EEGdata first
 function triggerEdit(subId,filename)
+%%for some data the it is not starting from trial 1
+if subId<15
 load('startingTriggerTrial');
 startingTrial = startingTrigerTrial(2,subId-9)+1;
+else 
+startingTrial =1;
+end
+%%
 inputFolder = '/Volumes/colin/EEG_data/';
 outputFolder = '/Volumes/colin/cutEEGdata';
 EEG = pop_loadset('filename',filename,'filepath',inputFolder);
