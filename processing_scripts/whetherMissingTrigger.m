@@ -8,7 +8,6 @@ end
 LoadingDir = '/Volumes/colin/cutEEGdata/';
 load('startingTriggerTrial');
 filename = [num2str(subId),'b.set'];
->>>>>>> Stashed changes
 run '../eeglab.m'
 EEG = pop_loadset('filename',filename,'filepath',LoadingDir);
 
