@@ -1,7 +1,7 @@
 inputFolder = '/Volumes/colin/cutEEGdata';
 datafile = dir('/Volumes/colin/cutEEGdata/*.set');
 SavingDir = '/Volumes/colin/eegResampled';
-for i = 1:length(datafile)
+for i = length(datafile)-1:length(datafile)
 filename = datafile(i).name;
 subId = str2num(filename(1:2));
 EEG = pop_loadset('filename',filename,'filepath',inputFolder);
