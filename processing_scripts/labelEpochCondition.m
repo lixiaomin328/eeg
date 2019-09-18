@@ -1,6 +1,4 @@
-triggerId = 1;
-subId = 11;
-playerRole = 1;
+function [epochCondition1,epochCondition2,filename]=labelEpochCondition(triggerId,subId,playerRole)
 playerRoleWords = {'b','a'};
 filename = [num2str(subId),playerRoleWords{playerRole},'.set'];
 LoadingDir = ['/Volumes/colin/outputTrigger',num2str(triggerId),'/',num2str(subId),playerRoleWords{playerRole},'/'];
