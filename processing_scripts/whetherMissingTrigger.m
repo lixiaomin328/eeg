@@ -6,7 +6,6 @@ else
 startingTrial =1;
 end
 LoadingDir = '/Volumes/colin/cutEEGdata/';
-load('startingTriggerTrial');
 filename = [num2str(subId),'b.set'];
 run '../eeglab.m'
 EEG = pop_loadset('filename',filename,'filepath',LoadingDir);
