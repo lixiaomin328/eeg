@@ -19,7 +19,7 @@ for timeBin = 1:length(eventEpoch)
 end
 epochCards = cardIndex(epochTrialNum);%what card is shown on each time point
 epochCondition1 = find(epochCards>3&epochCards<7);
-epochCondition2 = find(epochCards>6|epochCards<3);
+epochCondition2 = find(epochCards>6|epochCards<4);
 
-data1 = EEG.data(53,:,epochCondition1);
-data2 = EEG.data(53,:,epochCondition2);
+%data1 = EEG.data(53,:,epochCondition1);
+%data2 = EEG.data(53,:,epochCondition2);

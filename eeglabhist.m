@@ -1,18 +1,13 @@
-% EEGLAB history file generated on the 19-Sep-2019
+% EEGLAB history file generated on the 23-Sep-2019
 % ------------------------------------------------
+[ALLEEG EEG CURRENTSET ALLCOM] = eeglab;
+[STUDY ALLEEG] = std_editset( STUDY, [], 'name','trigger2_1016','task','poker','commands',{ {'index' 1 'load' '/Volumes/colin/conditionsEEG/10b_condition1_triggerId2.set'} {'index' 2 'load' '/Volumes/colin/conditionsEEG/10b_condition2_triggerId2.set'} {'index' 3 'load' '/Volumes/colin/conditionsEEG/11b_condition1_triggerId2.set' 'load' '/Volumes/colin/conditionsEEG/11b_condition2_triggerId2.set'} {'index' 4 'load' '/Volumes/colin/conditionsEEG/11b_condition1_triggerId2.set'} {'index' 5 'load' '/Volumes/colin/conditionsEEG/12b_condition1_triggerId2.set'} {'index' 6 'load' '/Volumes/colin/conditionsEEG/12b_condition2_triggerId2.set'} {'index' 7 'load' '/Volumes/colin/conditionsEEG/13b_condition1_triggerId2.set'} {'index' 8 'load' '/Volumes/colin/conditionsEEG/13b_condition2_triggerId2.set'} {'index' 9 'load' '/Volumes/colin/conditionsEEG/14b_condition1_triggerId2.set'} {'index' 10 'load' '/Volumes/colin/conditionsEEG/14b_condition2_triggerId2.set'} {'index' 11 'load' '/Volumes/colin/conditionsEEG/15b_condition2_triggerId2.set'} {'index' 12 'load' '/Volumes/colin/conditionsEEG/15b_condition2_triggerId2.set' 'load' '/Volumes/colin/conditionsEEG/15b_condition1_triggerId2.set'} {'index' 13 'load' '/Volumes/colin/conditionsEEG/16b_condition1_triggerId2.set'} {'index' 14 'load' '/Volumes/colin/conditionsEEG/16b_condition2_triggerId2.set'}},'updatedat','on','savedat','on','rmclust','on' );
+[STUDY ALLEEG] = std_checkset(STUDY, ALLEEG);
+CURRENTSTUDY = 1; 
+EEG = ALLEEG; CURRENTSET = [1:length(EEG)];
+EEG = eeg_checkset( EEG );
+[STUDY EEG] = pop_savestudy( STUDY, EEG, 'filename','trigger2_study.study','filepath','/Volumes/colin/');
+CURRENTSTUDY = 1; EEG = ALLEEG; CURRENTSET = [1:length(EEG)];
 
-EEG.etc.eeglabvers = 'development head'; % this tracks which version of EEGLAB is being used, you may ignore it
-EEG = pop_biosig('/Volumes/My Passport/12_EEG', 'channels',[1:210] );
-EEG.setname='12cBDF file';
-EEG = eeg_checkset( EEG );
-EEG = pop_select( EEG, 'channel',{'2-A1' '2-A2' '2-A3' '2-A4' '2-A5' '2-A6' '2-A7' '2-A8' '2-A9' '2-A10' '2-A11' '2-A12' '2-A13' '2-A14' '2-A15' '2-A16' '2-A17' '2-A18' '2-A19' '2-A20' '2-A21' '2-A22' '2-A23' '2-A24' '2-A25' '2-A26' '2-A27' '2-A28' '2-A29' '2-A30' '2-A31' '2-A32' '2-B1' '2-B2' '2-B3' '2-B4' '2-B5' '2-B6' '2-B7' '2-B8' '2-B9' '2-B10' '2-B11' '2-B12' '2-B13' '2-B14' '2-B15' '2-B16' '2-B17' '2-B18' '2-B19' '2-B20' '2-B21' '2-B22' '2-B23' '2-B24' '2-B25' '2-B26' '2-B27' '2-B28' '2-B29' '2-B30' '2-B31' '2-B32'});
-EEG.setname='12bBDF file';
-EEG = pop_loadset('filename','12b.set','filepath','/Volumes/colin/EEG_data/');
-EEG = eeg_checkset( EEG );
-EEG = pop_editeventvals(EEG,'delete',1);
-EEG = eeg_checkset( EEG );
-EEG = eeg_checkset( EEG );
-EEG = pop_loadset('filename','12b.set','filepath','/Volumes/colin/outputTrigger1/12b/');
-EEG = eeg_checkset( EEG );
-EEG = pop_saveset( EEG, 'filename','try.set','filepath','/Users/lixiaomin/Desktop/');
-EEG = eeg_checkset( EEG );
+STUDY = pop_statparams(STUDY, 'effect','marginal','groupstats','on','condstats','on','singletrials','on');
+eeglab redraw;
