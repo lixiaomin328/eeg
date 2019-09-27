@@ -11,15 +11,18 @@ load([behaviorDataPath,'participant_',num2str(subId),'.mat']);
 behavioralData = dataStructure;
 allCards = [behavioralData.P1card,behavioralData.P2card];
 cardIndex = allCards(:,playerRole);
-
+allBehaviorals = [behavioralData.player1ActionCheck_keys,behavioralData.player2ActionCheck_keys];
+behavIndex = allBehaviorals(:,playerRole);
 %% Epoch num
 epochTrialNum = zeros(EEG.trials,1);
 for timeBin = 1:length(eventEpoch)
     epochTrialNum(eventEpoch(timeBin)) = eventTrialnum(timeBin);
 end
-epochCards = cardIndex(epochTrialNum);%what card is shown on each time point
-epochCondition1 = find(epochCards>3&epochCards<7);
-epochCondition2 = find(epochCards>6|epochCards<4);
-
+epochCards = cardIndex(epochTrialNum);
+epochBev = behavIndex(epochTrialNum);%what card is shown on each time point
+%epochCondition1 = find(epochCards>3&epochCards<7);
+%epochCondition2 = find(epochCards>6|epochCards<4);
+epochCondition1 = find(epochCards==2|epochCards==3&epochBev==1);
+epochCondition2 = find(epochCards==2|epochCards==3&epochBev==0);
 %data1 = EEG.data(53,:,epochCondition1);
 %data2 = EEG.data(53,:,epochCondition2);
