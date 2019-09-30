@@ -15,7 +15,8 @@ EEG = eeg_checkset( EEG );
 EEG = pop_editeventvals(EEG,'delete',1);
 EEG = eeg_checkset( EEG );
 EEG = eeg_checkset( EEG );
-EEG = eeg_checkset( EEG );
-EEG=pop_chanedit(EEG, 'lookup','/Users/lixiaomin/Documents/GitHub/eeg/plugins/dipfit/standard_BEM/elec/standard_1005.elc');
-EEG = eeg_checkset( EEG );
-EEG = pop_dipfit_settings( EEG, 'hdmfile','/Users/lixiaomin/Documents/GitHub/eeg/plugins/dipfit/standard_BEM/standard_vol.mat','coordformat','MNI','mrifile','/Users/lixiaomin/Documents/GitHub/eeg/plugins/dipfit/standard_BEM/standard_mri.mat','chanfile','/Users/lixiaomin/Documents/GitHub/eeg/plugins/dipfit/standard_BEM/elec/standard_1005.elc','coord_transform',[0 0 0 0 0 -1.5708 1 1 1] ,'chansel',[1:64] );
+EEG = pop_dipfit_settings( EEG, 'hdmfile','/Users/xiaominli/Documents/eeg/plugins/dipfit/standard_BEM/standard_vol.mat','coordformat','MNI','mrifile','/Users/xiaominli/Documents/eeg/plugins/dipfit/standard_BEM/standard_mri.mat','chanfile','/Users/xiaominli/Documents/eeg/plugins/dipfit/standard_BEM/elec/standard_1005.elc','coord_transform',[0 0 0 0 0 -1.5708 1 1 1] ,'chansel',[1:64] );
+EEG = pop_dipfit_gridsearch(EEG, [1:59] ,[-85     -77.6087     -70.2174     -62.8261     -55.4348     -48.0435     -40.6522     -33.2609     -25.8696     -18.4783      -11.087     -3.69565      3.69565       11.087      18.4783      25.8696      33.2609      40.6522      48.0435      55.4348      62.8261      70.2174      77.6087           85] ,[-85     -77.6087     -70.2174     -62.8261     -55.4348     -48.0435     -40.6522     -33.2609     -25.8696     -18.4783      -11.087     -3.69565      3.69565       11.087      18.4783      25.8696      33.2609      40.6522      48.0435      55.4348      62.8261      70.2174      77.6087           85] ,[0      7.72727      15.4545      23.1818      30.9091      38.6364      46.3636      54.0909      61.8182      69.5455      77.2727           85] ,0.4);
+pop_dipplot( EEG, [1:13 15 16:21 24 25:29 31 32 36 37:39 42 43 49:6:55] ,'mri','/Users/xiaominli/Documents/eeg/plugins/dipfit/standard_BEM/standard_mri.mat','normlen','on');
+% === History not supported for manual dipole fitting ===
+EEG = pop_multifit(EEG, [1:59] ,'threshold',100,'dipplot','on','plotopt',{'normlen' 'on'});

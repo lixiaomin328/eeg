@@ -1,15 +1,6 @@
-% EEGLAB history file generated on the 18-Sep-2019
+% EEGLAB history file generated on the 28-Sep-2019
 % ------------------------------------------------
+[STUDY ALLEEG] = std_precomp(STUDY, ALLEEG, {},'savetrials','on','interp','on','recompute','on','erp','on','spec','on','specparams',{'specmode' 'fft' 'logtrials' 'off'},'erpim','on','erpimparams',{'nlines' 10 'smoothing' 10},'ersp','on','erspparams',{'cycles' [3 0.8]  'nfreqs' 100 'ntimesout' 200},'itc','on'); 
+[ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 1,'retrieve',[1:16] ,'study',1); CURRENTSTUDY = 1;
+[STUDY ALLEEG] = std_precomp(STUDY, ALLEEG, 'components','savetrials','on','recompute','on','erp','on','scalp','on','spec','on','specparams',{'specmode' 'fft' 'logtrials' 'off'},'erpim','on','erpimparams',{'nlines' 10 'smoothing' 10},'ersp','on','erspparams',{'cycles' [3 0.8]  'nfreqs' 100 'ntimesout' 200},'itc','on');
 
-EEG.etc.eeglabvers = 'development head'; % this tracks which version of EEGLAB is being used, you may ignore it
-EEG = pop_biosig('/Volumes/My Passport/12_EEG', 'channels',[1:64] );
-EEG.setname='12aBDF file';
-EEG = eeg_checkset( EEG );
-EEG = pop_loadset('filename','12a.set','filepath','/Volumes/colin/EEG_data/');
-EEG = eeg_checkset( EEG );
-EEG = pop_editeventvals(EEG,'delete',1);
-EEG = eeg_checkset( EEG );
-EEG = eeg_checkset( EEG );
-EEG = pop_loadset('filename','12a.set','filepath','/Volumes/colin/outputTrigger1/12a/');
-EEG = eeg_checkset( EEG );
-figure; pop_newtimef( EEG, 1, 1, [-200  798], [3         0.5] , 'topovec', 1, 'elocs', EEG.chanlocs, 'chaninfo', EEG.chaninfo, 'caption', 'Fp1', 'baseline',[0], 'alpha',0.05, 'plotphase', 'off', 'padratio', 1, 'winsize', 100);
