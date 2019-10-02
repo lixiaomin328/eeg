@@ -436,7 +436,7 @@ try
         if ~o.channel_options.interp_after_ica
             EEG = h_pop_reref(EEG, [], 'exclude',ext_chans, 'refstate', ref_chan);
         else
-            EEG = h_pop_reref(EEG, [], 'exclude',[ext_chans chans_to_interp], 'refstate', ref_chan);
+            EEG = h_pop_reref(EEG, [], 'exclude',[ext_chans chans_to_interp'], 'refstate', ref_chan);
         end
     end
 

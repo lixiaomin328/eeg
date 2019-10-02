@@ -8,8 +8,10 @@ else
 startingTrial =1;
 end
 %%
-inputFolder = '/Volumes/colin/EEG_data/';
-outputFolder = '/Volumes/colin/cutEEGdata';
+%inputFolder = '/Volumes/colin/EEG_data/';
+%outputFolder = '/Volumes/colin/cutEEGdata';
+inputFolder = '/Volumes/colin/eegResampled/';
+outputFolder = '/Volumes/colin/eegResampled';
 EEG = pop_loadset('filename',filename,'filepath',inputFolder);
 [p2DecisionStart,p2DecisionMade,recoveredTrigger,recoveredTrialNum] = triggerFindP2(subId,startingTrial);
 for i = 1:length(p2DecisionStart)

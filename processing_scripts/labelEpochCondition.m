@@ -20,9 +20,9 @@ for timeBin = 1:length(eventEpoch)
 end
 epochCards = cardIndex(epochTrialNum);
 epochBev = behavIndex(epochTrialNum);%what card is shown on each time point
-epochCondition1 = find(epochCards>3&epochCards<7);
-epochCondition2 = find(epochCards>6|epochCards<4);
-%epochCondition1 = find(epochCards==2|epochCards==3&epochBev==1);
-%epochCondition2 = find(epochCards==2|epochCards==3&epochBev==0);
+%epochCondition1 = find(epochCards>3&epochCards<7);
+%epochCondition2 = find(epochCards>6|epochCards<4);
+epochCondition1 = find(epochCards==2|epochCards==3&epochBev==1);
+epochCondition2 = find(epochCards==2|epochCards==3&epochBev==0);
 %data1 = EEG.data(53,:,epochCondition1);
 %data2 = EEG.data(53,:,epochCondition2);
