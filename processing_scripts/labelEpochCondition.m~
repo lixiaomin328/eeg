@@ -23,9 +23,9 @@ epochBev = behavIndex(epochTrialNum);%what card is shown on each time point
 %epochCondition1 = find(epochCards>3&epochCards<7);
 %epochCondition2 = find(epochCards>6|epochCards<4);
 randNum = randi(2,length(epochCards),1);
-epochCondition1 = find(randNum==2);
-epochCondition2 = find(randNum==1);
-%epochCondition1 = find(epochCards==2|epochCards==3&epochBev==1);
-%epochCondition2 = find(epochCards==2|epochCards==3&epochBev==0);
+epochCondition1
+epochCondition2
+epochCondition1 = find(epochCards==2|epochCards==3&epochBev==1);
+epochCondition2 = find(epochCards==2|epochCards==3&epochBev==0);
 %data1 = EEG.data(53,:,epochCondition1);
 %data2 = EEG.data(53,:,epochCondition2);
