@@ -1,11 +1,11 @@
-function conditionEEG(triggerId,subId,playerRole)
+function conditionEEG(triggerId,subId,playerRole,condition)
 outputDir = '/Volumes/colin/conditionsEEG';
 if ~exist(outputDir)
     mkdir(outputDir)
 end
 conditionNum=2;
 playerRoleWords = {'b','a'};
-[epochCondition1,epochCondition2,filename]=labelEpochCondition(triggerId,subId,playerRole);
+[epochCondition1,epochCondition2,filename]=labelEpochCondition(triggerId,subId,playerRole,condition);
 LoadingDir = ['/Volumes/colin/outputTrigger',num2str(triggerId),'/',num2str(subId),playerRoleWords{playerRole},'/'];
 if ~exist([LoadingDir,filename])
     return
