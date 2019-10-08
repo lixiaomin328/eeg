@@ -1,9 +1,10 @@
-for triggerId = 1%:2
+for triggerId = 6%:2
     loadingDir = ['/Volumes/colin/outputTrigger',num2str(triggerId)];
+    %loadingDir = '/Volumes/colin/outputTrigger1Try/';
     playerRoleWords = {'b','a'};
     %EEGfiles = dir(LoadingDir);
     for playerRole = 1:2
-        for subId = 17%length(EEGfiles)
+        for subId = 18%10:16%length(EEGfiles)
             subLoadingDir = [loadingDir,'/',num2str(subId),playerRoleWords{playerRole},'/'];
             filename = [num2str(subId),playerRoleWords{playerRole},'.set'];
             EEG = pop_loadset('filename',filename,'filepath',subLoadingDir);

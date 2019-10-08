@@ -1,8 +1,8 @@
-triggerId = 1;
+triggerId = 6;
 allConditions = {'bluffOrNot','highLowCards','randControl','betOrNot'};
 conditionNum = 4;
 condition = allConditions{conditionNum};
-for subId = 10:17 
+for subId = 10:18 
 for playerRole = 1
     conditionEEG(triggerId,subId,playerRole,condition)
 end

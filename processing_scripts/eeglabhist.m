@@ -1,6 +1,12 @@
-% EEGLAB history file generated on the 28-Sep-2019
+% EEGLAB history file generated on the 07-Oct-2019
 % ------------------------------------------------
-[STUDY ALLEEG] = std_precomp(STUDY, ALLEEG, {},'savetrials','on','interp','on','recompute','on','erp','on','spec','on','specparams',{'specmode' 'fft' 'logtrials' 'off'},'erpim','on','erpimparams',{'nlines' 10 'smoothing' 10},'ersp','on','erspparams',{'cycles' [3 0.8]  'nfreqs' 100 'ntimesout' 200},'itc','on'); 
-[ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 1,'retrieve',[1:16] ,'study',1); CURRENTSTUDY = 1;
-[STUDY ALLEEG] = std_precomp(STUDY, ALLEEG, 'components','savetrials','on','recompute','on','erp','on','scalp','on','spec','on','specparams',{'specmode' 'fft' 'logtrials' 'off'},'erpim','on','erpimparams',{'nlines' 10 'smoothing' 10},'ersp','on','erspparams',{'cycles' [3 0.8]  'nfreqs' 100 'ntimesout' 200},'itc','on');
+
+LoadingDir = '/Volumes/colin/EEG_data/';
+filename = [num2str(subId),'a.set'];
+run '../eeglab.m'
+EEG = pop_loadset('filename',filename,'filepath',LoadingDir);
+EEG = eeg_checkset( EEG );
+EEG = pop_editeventvals(EEG,'delete',1,'delete',1,'delete',1,'delete',1);
+EEG = eeg_checkset( EEG );
+EEG = pop_saveset(EEG,'filename',filename,'filepath',LoadingDir);
 

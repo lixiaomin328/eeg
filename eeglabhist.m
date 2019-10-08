@@ -1,19 +1,30 @@
-% EEGLAB history file generated on the 01-Oct-2019
+% EEGLAB history file generated on the 06-Oct-2019
 % ------------------------------------------------
-loadingDir = ['/Volumes/colin/outputTrigger',num2str(triggerId)];
-playerRoleWords = {'b','a'};
-%EEGfiles = dir(LoadingDir);
-for playerRole = 1:2
-    for subId = 16:17
-        subLoadingDir = [loadingDir,'/',num2str(subId),playerRoleWords{playerRole},'/'];
-        
-        filename = [num2str(subId),playerRoleWords{playerRole},'.set'];
-        EEG = pop_loadset('filename',filename,'filepath',subLoadingDir);
-        EEG = pop_select( EEG, 'channel',{'Fp1' 'AF7' 'AF3' 'F1' 'F3' 'F5' 'F7' ...
-            'FT7' 'FC5' 'FC3' 'FC1' 'C1' 'C3' 'C5' 'T7' 'TP7' 'CP5' 'CP3' 'CP1' 'P1' ...
-            'P3' 'P5' 'P7' 'P9' 'PO7' 'PO3' 'O1' 'Iz' 'Oz' 'POz' 'Pz' 'CPz' 'Fpz' 'Fp2' ...
-            'AF8' 'AF4' 'Afz' 'Fz' 'F2' 'F4' 'F6' 'F8' 'FT8' 'FC6' 'FC4' 'FC2' 'FCz' 'Cz' ...
-            'C2' 'C4' 'C6' 'T8' 'TP8' 'CP6' 'CP4' 'CP2' 'P2' 'P4' 'P6' 'P8' 'P10' 'PO8' 'PO4' 'O2'});
-        pop_saveset(EEG, 'filename',filename,'filepath',subLoadingDir);
-    end
-end
+
+EEG.etc.eeglabvers = 'development head'; % this tracks which version of EEGLAB is being used, you may ignore it
+EEG = pop_biosig('/Users/xiaominli/Google Drive/EEG POKEr/10.bdf');
+EEG.setname='10BDF file';
+EEG = eeg_checkset( EEG );
+EEG = pop_saveset( EEG, 'filename','10.set','filepath','/Users/xiaominli/Google Drive/EEG POKEr/');
+EEG = eeg_checkset( EEG );
+EEG = eeg_checkset( EEG );
+EEG = pop_select( EEG, 'channel',{'2-A1' '2-A2' '2-A3' '2-A4' '2-A5' '2-A6' '2-A7' '2-A8' '2-A9' '2-A10' '2-A11' '2-A12' '2-A13' '2-A14' '2-A15' '2-A16' '2-A17' '2-A18' '2-A19' '2-A20' '2-A21' '2-A22' '2-A23' '2-A24' '2-A25' '2-A26' '2-A27' '2-A28' '2-A29' '2-A30' '2-A31' '2-A32' '2-B1' '2-B2' '2-B3' '2-B4' '2-B5' '2-B6' '2-B7' '2-B8' '2-B9' '2-B10' '2-B11' '2-B12' '2-B13' '2-B14' '2-B15' '2-B16' '2-B17' '2-B18' '2-B19' '2-B20' '2-B21' '2-B22' '2-B23' '2-B24' '2-B25' '2-B26' '2-B27' '2-B28' '2-B29' '2-B30' '2-B31' '2-B32'});
+EEG.setname='10bBDF file';
+EEG = pop_loadset('filename','10b.set','filepath','/Volumes/colin/EEG_data/');
+EEG = eeg_checkset( EEG );
+EEG = pop_editeventvals(EEG,'delete',1);
+EEG = eeg_checkset( EEG );
+EEG = pop_loadset('filename','10b.set','filepath','/Volumes/colin/eegResampled/');
+EEG = eeg_checkset( EEG );
+EEG = pop_eegfilt( EEG, 1, 0, [], [0], 0, 0, 'fir1', 0);
+EEG = eeg_checkset( EEG );
+EEG = pop_loadset('filename','try.set','filepath','/Users/xiaominli/Documents/eeg/');
+EEG = eeg_checkset( EEG );
+EEG = pop_loadset('filename','try.set','filepath','/Users/xiaominli/Documents/eeg/');
+EEG = eeg_checkset( EEG );
+EEG = pop_reref( EEG, []);
+EEG = eeg_checkset( EEG );
+EEG = eeg_checkset( EEG );
+EEG = pop_runica(EEG, 'icatype', 'runica', 'extended',1,'pca',10,'interrupt','on');
+EEG = eeg_checkset( EEG );
+EEG = pop_cleanline(EEG, 'bandwidth',2,'chanlist',[1:64] ,'computepower',0,'linefreqs',[60 120] ,'normSpectrum',0,'p',0.01,'pad',2,'plotfigures',0,'scanforlines',1,'sigtype','Channels','tau',100,'verb',1,'winsize',4,'winstep',1);
