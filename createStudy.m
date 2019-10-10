@@ -1,10 +1,10 @@
 % EEGLAB history file generated on the 23-Sep-2019
 % ------------------------------------------------
 allConditions = {'bluffOrNot','highLowCards','randControl','betOrNot'};
-conditionNum = 4;
-minIca = 56;
+conditionNum = 2;
+minIca = 64;
 [ALLEEG EEG CURRENTSET ALLCOM] = eeglab;
-loadingFolder = '/Volumes/colin/conditionsEEG/';
+loadingFolder = '/Volumes/colin/tryNewPiple/';
 conditionEEGfiles = dir([loadingFolder,'*.set']);
 listAll = cell(1,2*length(conditionEEGfiles)+1);
 %studyLists = cell(1,length(conditionEEGfiles));
@@ -24,7 +24,7 @@ listAll{length(conditionEEGfiles)+1} ={'inbrain' 'on' 'dipselect' 0.15};
 CURRENTSTUDY = 1; 
 EEG = ALLEEG; CURRENTSET = [1:length(EEG)];
 EEG = eeg_checkset( EEG );
-[STUDY EEG] = pop_savestudy( STUDY, EEG, 'filename','trigger1_study.study','filepath','/Volumes/colin/conditionsEEG');
+[STUDY EEG] = pop_savestudy( STUDY, EEG, 'filename','trigger1_study.study','filepath',loadingFolder);
 CURRENTSTUDY = 1; EEG = ALLEEG; CURRENTSET = [1:length(EEG)];
 
 STUDY = pop_statparams(STUDY, 'effect','marginal','groupstats','on','condstats','on','singletrials','on');

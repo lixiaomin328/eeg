@@ -1,13 +1,13 @@
 for triggerId = 6%:2
-    loadingDir = ['/Volumes/colin/outputTrigger',num2str(triggerId)];
-    %loadingDir = '/Volumes/colin/outputTrigger1Try/';
+    %loadingDir = ['/Volumes/colin/outputTrigger',num2str(triggerId)];
+    loadingDir = '/Volumes/colin/tryNewPiple/';
     playerRoleWords = {'b','a'};
     %EEGfiles = dir(LoadingDir);
     for playerRole = 1:2
-        for subId = 18%10:16%length(EEGfiles)
-            subLoadingDir = [loadingDir,'/',num2str(subId),playerRoleWords{playerRole},'/'];
+        for subId = 10:18%length(EEGfiles)
+            %subLoadingDir = [loadingDir,'/',num2str(subId),playerRoleWords{playerRole},'/'];
             filename = [num2str(subId),playerRoleWords{playerRole},'.set'];
-            EEG = pop_loadset('filename',filename,'filepath',subLoadingDir);
+            EEG = pop_loadset('filename',filename,'filepath',loadingDir);
             EEG=pop_chanedit(EEG, 'lookup','plugins/dipfit/standard_BEM/elec/standard_1005.elc');
             EEG = eeg_checkset( EEG );
             EEG = pop_dipfit_settings( EEG, ...
@@ -31,7 +31,8 @@ for triggerId = 6%:2
                 38.6364  46.3636  54.0909  61.8182    ...
                 69.5455  77.2727  85] ,0.4);
             EEG = pop_multifit(EEG, [1:size(EEG.icawinv,2)] ,'threshold',100);
-            pop_saveset(EEG, 'filename',filename,'filepath',subLoadingDir);
+            EEG = fitTwoDipoles(EEG, 'LRR', 35);
+            pop_saveset(EEG, 'filename',filename,'filepath',loadingDir);
         end
     end
 end

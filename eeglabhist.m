@@ -1,4 +1,4 @@
-% EEGLAB history file generated on the 06-Oct-2019
+% EEGLAB history file generated on the 10-Oct-2019
 % ------------------------------------------------
 
 EEG.etc.eeglabvers = 'development head'; % this tracks which version of EEGLAB is being used, you may ignore it
@@ -8,23 +8,21 @@ EEG = eeg_checkset( EEG );
 EEG = pop_saveset( EEG, 'filename','10.set','filepath','/Users/xiaominli/Google Drive/EEG POKEr/');
 EEG = eeg_checkset( EEG );
 EEG = eeg_checkset( EEG );
-EEG = pop_select( EEG, 'channel',{'2-A1' '2-A2' '2-A3' '2-A4' '2-A5' '2-A6' '2-A7' '2-A8' '2-A9' '2-A10' '2-A11' '2-A12' '2-A13' '2-A14' '2-A15' '2-A16' '2-A17' '2-A18' '2-A19' '2-A20' '2-A21' '2-A22' '2-A23' '2-A24' '2-A25' '2-A26' '2-A27' '2-A28' '2-A29' '2-A30' '2-A31' '2-A32' '2-B1' '2-B2' '2-B3' '2-B4' '2-B5' '2-B6' '2-B7' '2-B8' '2-B9' '2-B10' '2-B11' '2-B12' '2-B13' '2-B14' '2-B15' '2-B16' '2-B17' '2-B18' '2-B19' '2-B20' '2-B21' '2-B22' '2-B23' '2-B24' '2-B25' '2-B26' '2-B27' '2-B28' '2-B29' '2-B30' '2-B31' '2-B32'});
-EEG.setname='10bBDF file';
-EEG = pop_loadset('filename','10b.set','filepath','/Volumes/colin/EEG_data/');
+EEG = pop_select( EEG, 'channel',{'1-A1' '1-A2' '1-A3' '1-A4' '1-A5' '1-A6' '1-A7' '1-A8' '1-A9' '1-A10' '1-A11' '1-A12' '1-A13' '1-A14' '1-A15' '1-A16' '1-A17' '1-A18' '1-A19' '1-A20' '1-A21' '1-A22' '1-A23' '1-A24' '1-A25' '1-A26' '1-A27' '1-A28' '1-A29' '1-A30' '1-A31' '1-A32' '1-B1' '1-B2' '1-B3' '1-B4' '1-B5' '1-B6' '1-B7' '1-B8' '1-B9' '1-B10' '1-B11' '1-B12' '1-B13' '1-B14' '1-B15' '1-B16' '1-B17' '1-B18' '1-B19' '1-B20' '1-B21' '1-B22' '1-B23' '1-B24' '1-B25' '1-B26' '1-B27' '1-B28' '1-B29' '1-B30' '1-B31' '1-B32'});
+EEG.setname='10aBDF file';
+EEG = pop_loadset('filename','10a.set','filepath','/Volumes/colin/EEG_data/');
+EEG = eeg_checkset( EEG );
+EEG = pop_saveset( EEG, 'filename','10a.set','filepath','/Volumes/colin/EEG_data/');
+EEG = eeg_checkset( EEG );
 EEG = eeg_checkset( EEG );
 EEG = pop_editeventvals(EEG,'delete',1);
 EEG = eeg_checkset( EEG );
-EEG = pop_loadset('filename','10b.set','filepath','/Volumes/colin/eegResampled/');
-EEG = eeg_checkset( EEG );
-EEG = pop_eegfilt( EEG, 1, 0, [], [0], 0, 0, 'fir1', 0);
-EEG = eeg_checkset( EEG );
-EEG = pop_loadset('filename','try.set','filepath','/Users/xiaominli/Documents/eeg/');
-EEG = eeg_checkset( EEG );
-EEG = pop_loadset('filename','try.set','filepath','/Users/xiaominli/Documents/eeg/');
-EEG = eeg_checkset( EEG );
-EEG = pop_reref( EEG, []);
+EEG = clean_rawdata(EEG, 'off', 'off', 0.8, 'off', 8, 0.25, );
 EEG = eeg_checkset( EEG );
 EEG = eeg_checkset( EEG );
-EEG = pop_runica(EEG, 'icatype', 'runica', 'extended',1,'pca',10,'interrupt','on');
+EEG = pop_loadset('filename','10a.set','filepath','/Volumes/colin/tryNewPiple/');
 EEG = eeg_checkset( EEG );
-EEG = pop_cleanline(EEG, 'bandwidth',2,'chanlist',[1:64] ,'computepower',0,'linefreqs',[60 120] ,'normSpectrum',0,'p',0.01,'pad',2,'plotfigures',0,'scanforlines',1,'sigtype','Channels','tau',100,'verb',1,'winsize',4,'winstep',1);
+EEG = pop_epoch( EEG, {  '1'  }, [-1  2], 'newname', '10aBDF file resampled resampled epochs', 'epochinfo', 'yes');
+EEG = eeg_checkset( EEG );
+EEG = pop_rmbase( EEG, [-1000 0] ,[]);
+EEG = eeg_checkset( EEG );

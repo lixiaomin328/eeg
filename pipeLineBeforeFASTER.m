@@ -19,9 +19,10 @@ tau = 100;
 winsize = 4;
 winstep = 1;
 %% high pass filter and channel locations
-for subId = length(eegFiles)-1:length(eegFiles)
+for subId = 1:length(eegFiles)
 filename = eegFiles(subId).name;
 EEG = pop_loadset('filename',filename,'filepath',LoadingDir);
+EEG = pop_resample(EEG,256);
 EEG = eeg_checkset(EEG);
 EEG = pop_eegfilt( EEG,highPass,0,[], [0], 0, 0, 'fir1', 0);
 EEG = eeg_checkset( EEG );
@@ -34,6 +35,7 @@ originalEEG= EEG;
 cleanEEG = clean_rawdata(EEG, arg_flatline, arg_highpass, arg_channel, ...
 arg_noisy, arg_burst, arg_window, optionalInputCells);
 %% Update EEG.
+cleanEEG.nbchan
 EEG = pop_interp(cleanEEG, originalEEG.chanlocs, 'spherical');
 % Output eegh.
 com = EEG.etc.clean_rawdata_log;
@@ -43,6 +45,10 @@ EEG.etc.clean_rawdata_log = com;
 assignin('base', 'EEG', EEG);
 %% re-reference to average
 EEG = pop_reref( EEG, []);
+%% ICA
+EEG = pop_runica(EEG, 'icatype', 'runica', 'extended',1,'interrupt','on');
+
+%%
 EEG = pop_saveset(EEG,'filename',filename,'filepath',SavingDir);
 fprintf(['Done for ',num2str(subId)])
 end
