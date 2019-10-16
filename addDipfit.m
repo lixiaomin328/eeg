@@ -1,6 +1,6 @@
-for triggerId = 6%:2
-    %loadingDir = ['/Volumes/colin/outputTrigger',num2str(triggerId)];
-    loadingDir = '/Volumes/colin/tryNewPiple/';
+for triggerId = 7%:2
+    loadingDir = ['/Volumes/colin/outputTrigger',num2str(triggerId)];
+    %loadingDir = '/Volumes/colin/tryNewPiple/';
     playerRoleWords = {'b','a'};
     %EEGfiles = dir(LoadingDir);
     for playerRole = 1:2

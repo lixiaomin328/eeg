@@ -1,11 +1,11 @@
 % EEGLAB history file generated on the 23-Sep-2019
 % ------------------------------------------------
 allConditions = {'bluffOrNot','highLowCards','randControl','betOrNot'};
-conditionNum = 2;
-minIca = 64;
+conditionNum = 4;
+minIca = 59;
 [ALLEEG EEG CURRENTSET ALLCOM] = eeglab;
-loadingFolder = '/Volumes/colin/tryNewPiple/';
-conditionEEGfiles = dir([loadingFolder,'*.set']);
+loadingFolder = '/Volumes/colin/outputTrigger7/';
+conditionEEGfiles = dir([loadingFolder,'*b.set']);
 listAll = cell(1,2*length(conditionEEGfiles)+1);
 %studyLists = cell(1,length(conditionEEGfiles));
 %icaLists = cell(1,length(conditionEEGfiles));

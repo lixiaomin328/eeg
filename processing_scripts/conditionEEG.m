@@ -5,8 +5,11 @@ if ~exist(outputDir)
 end
 conditionNum=2;
 playerRoleWords = {'b','a'};
-[epochCondition1,epochCondition2,filename]=labelEpochCondition(triggerId,subId,playerRole,condition);
-LoadingDir = ['/Volumes/colin/outputTrigger',num2str(triggerId),'/',num2str(subId),playerRoleWords{playerRole},'/'];
+LoadingDir=['/Volumes/colin/outputTrigger',num2str(triggerId),'/'];
+filename = [num2str(subId),playerRoleWords{playerRole},'.set'];
+%eegFiles = dir([LoadingDir,'*.set']);
+%subLoadingDir = [LoadingDir,num2str(subId),playerRoleWords{playerRole},'/'];
+[epochCondition1,epochCondition2]=labelEpochCondition(LoadingDir,filename,condition);
 if ~exist([LoadingDir,filename])
     return
 end

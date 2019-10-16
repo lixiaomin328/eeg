@@ -1,14 +1,19 @@
-function [epochCondition1,epochCondition2,filename]=labelEpochCondition(triggerId,subId,playerRole,condition)
+function [epochCondition1,epochCondition2]=labelEpochCondition(LoadingDir,filename,condition)
 %condition, 'bluffOrNot','highLowCards','randControl','betOrNot'
 playerRoleWords = {'b','a'};
-filename = [num2str(subId),playerRoleWords{playerRole},'.set'];
-LoadingDir = ['/Volumes/colin/outputTrigger',num2str(triggerId),'/',num2str(subId),playerRoleWords{playerRole},'/'];
+if strcmp(filename(3),'a')==1
+    playerRole=2;
+else
+    playerRole =1;
+end
+%filename = [num2str(subId),playerRoleWords{playerRole},'.set'];
+%LoadingDir = ['/Volumes/colin/outputTrigger',num2str(triggerId),'/',num2str(subId),playerRoleWords{playerRole},'/'];
 EEG = pop_loadset('filename',filename,'filepath',LoadingDir);
 eventTrialnum = [EEG.event.trialNum]';
 eventEpoch  = [EEG.event.epoch]';
 %%behavioral data search
 behaviorDataPath = '../../poker/data_processing_scripts/DataMat/';
-load([behaviorDataPath,'participant_',num2str(subId),'.mat']);
+load([behaviorDataPath,'participant_',filename(1:2),'.mat']);
 behavioralData = dataStructure;
 allCards = [behavioralData.P1card,behavioralData.P2card];
 cardIndex = allCards(:,playerRole);
